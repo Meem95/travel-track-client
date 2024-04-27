@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet";
 import Slider from "./Home/Slider";
+import Gallery from "./Home/Gallery";
+import Review from "./Home/Review";
 
 const Home = () => {
   return (
@@ -9,6 +11,12 @@ const Home = () => {
       </Helmet>
       <div>
         <Slider></Slider>
+      </div>
+      <div>
+        <Gallery></Gallery>
+      </div>
+      <div>
+        <Review></Review>
       </div>
     </div>
   );
