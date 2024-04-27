@@ -1,11 +1,63 @@
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
+import app from "../firebase/firebase.config";
 
 
 const Login = () => {
+  const auth =getAuth(app);
+  const [user ,setUser] = useState(null);
+  const { signIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log('location i n the login page', location)
+  const provider = new GoogleAuthProvider();
+
+  const handleGoogleSignIn = ()=> {
+    signInWithPopup(auth, provider)
+    .then((result) => {
+     
+     
+      const loggedInUser = result.user;
+      console.log(loggedInUser);
+      setUser(loggedInUser);
+     alert('Login successful!');
+      navigate(location?.state ? location.state : '/');
+    }).catch((error) => {
+      
+      console.log(error.message);
+    });
+  }
+
+
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log(e.currentTarget);
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
+    console.log(email, password);
+    signIn(email, password)
+        .then(result => {
+            console.log(result.user);
+            alert('Login successful!');
+            // navigate after login
+            navigate(location?.state ? location.state : '/');
+
+        })
+        .catch(error => {
+            console.error(error);
+            alert('Invalid email or password. Please try again.');
+            
+        })
+  };
     return (
         <div>
              <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-[#dfe0e6] text-black mx-auto my-14">
         <h1 className="text-2xl font-bold text-center">Login</h1>
-        <form noValidate="" action="" className="space-y-6">
+        <form onSubmit={handleLogin} noValidate="" action="" className="space-y-6">
           <div className="space-y-1 text-sm">
             <label htmlFor="email" className="block text-black">
               Email
@@ -15,7 +67,7 @@ const Login = () => {
               name="email"
               id="email"
               placeholder="Username"
-              className="w-full px-4 py-3 rounded-md border-gray-700 bg-white text-gray-100 focus:border-violet-400"
+              className="w-full px-4 py-3 rounded-md border-gray-700 bg-white text-black focus:border-violet-400"
             />
           </div>
           
@@ -28,7 +80,7 @@ const Login = () => {
               name="password"
               id="password"
               placeholder="Password"
-              className="w-full px-4 py-3 rounded-md border-gray-700 bg-white text-gray-100 focus:border-violet-400"
+              className="w-full px-4 py-3 rounded-md border-gray-700 bg-white text-black focus:border-violet-400"
             />
           </div>
           <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-violet-400">
@@ -41,7 +93,7 @@ const Login = () => {
           <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button  onClick={handleGoogleSignIn} aria-label="Log in with Google" className="p-3 rounded-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
