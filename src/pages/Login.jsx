@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import app from "../firebase/firebase.config";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -22,11 +23,24 @@ const Login = () => {
       const loggedInUser = result.user;
       console.log(loggedInUser);
       setUser(loggedInUser);
-     alert('Login successful!');
+    // alert('Login successful!');
+      Swal.fire({
+          title: 'Success!',
+          text: 'Login Successfully',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+  
       navigate(location?.state ? location.state : '/');
     }).catch((error) => {
       
       console.log(error.message);
+      Swal.fire({
+        title: 'error!',
+        text: 'Invalid email or password. Please try again',
+        icon: 'success',
+        confirmButtonText: 'Cool'
+      })
     });
   }
 
@@ -42,14 +56,26 @@ const Login = () => {
     signIn(email, password)
         .then(result => {
             console.log(result.user);
-            alert('Login successful!');
+            
+            Swal.fire({
+              title: 'Success!',
+              text: 'Login Successfully',
+              icon: 'success',
+              confirmButtonText: 'Cool'
+            })
             // navigate after login
             navigate(location?.state ? location.state : '/');
 
         })
         .catch(error => {
             console.error(error);
-            alert('Invalid email or password. Please try again.');
+            
+            Swal.fire({
+              title: 'error!',
+              text: 'Invalid email or password. Please try again',
+              icon: 'success',
+              confirmButtonText: 'Sad'
+            })
             
         })
   };

@@ -48,7 +48,6 @@ const AddTouristSpot = () => {
     <div>
       <section className="p-6 text-black">
           <div className="shadow-lg p-5 border dark:bg-[#1a2641d5]">
-            {/* Heading */}
             <div className="mt-5 mb-8 flex  justify-center">
             <div className="text-3xl mt-1 text-[#FF8900]"><IoAddCircleSharp /></div>
             <div> <p className="text-center text-3xl font-bold">

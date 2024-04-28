@@ -2,10 +2,12 @@ import { useContext, useState } from "react";
 import logo from "../../assets/images/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Tooltip } from 'react-tooltip'
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [dropdownLeft, setDropdownLeft] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdownRight, setShowDropdownRight] = useState(false);
 
   const toggleDropdown = (left) => {
     setShowDropdown(!showDropdown);
@@ -187,15 +189,59 @@ const Navbar = () => {
           </ul>
         </div>
         <div className=" space-x-1">
-        <Link to="/login">  <button className="btn btn-warning bg-[#ff8900] rounded-3xl text-white ">
+        {!user ? (
+         <Link to="/login">  <button className="btn btn-sm lg:btn btn-warning bg-[#ff8900] lg:bg-[#ff8900] lg:rounded-3xl rounded-3xl text-white lg:text-white ">
             Login
           </button></Link>
+          ) : (
+            <div className="dropdown">
+          <label
+              tabIndex={0}
+              className="btn btn-ghost btn-circle avatar"
+              onClick={() => setShowDropdownRight(!showDropdownRight)}
+            
+            >
+              <div className="w-16 rounded-full my-anchor-element">
+                <img src={user?.photoURL } alt="User Avatar"   
+               />
+             
+              </div>
+              
+            </label>
+            <Tooltip anchorSelect=".my-anchor-element" className='z-30'  content= {user?.displayName || 'User'}>
+             
+             </Tooltip>
+           
+            {showDropdownRight && (
+              <div className="absolute z-10 -left-[120px] bg-white p-5 border-gray-600 shadow-xl rounded-lg">
+                <ul>
+                <li className="border-b-2  border-red-200"><NavLink to="/profile" className=" text-[#2f400e] mt-4">
+                  {user?.displayName || "User" }
+                </NavLink></li>
+                <li className="border-b-2 my-4 border-red-200">  <NavLink to="/edit-profile" className=" text-[#2f400e] mt-4">
+                  Edit Profile
+                </NavLink></li>
+                <li > <button onClick={handleSignOut} className="btn  text-[#2f400e] ">
+                  Logout
+                </button></li>
+                
+              
+               
+                </ul>
+              </div>
+             
+            )}
+          </div>
+        )}
+        {!user ?  (
           <Link to="/register">
-          <button onClick={handleSignOut} className="btn btn-warning bg-[#ff8900] rounded-3xl text-white">
+          <button onClick={handleSignOut} className="btn btn-sm lg:btn btn-warning bg-[#ff8900] lg:bg-[#ff8900] lg:rounded-3xl rounded-3xl text-white lg:text-white">
             Register
           </button>
           </Link>
-         
+        ):(
+          <p></p>
+        )}
          
         </div>
       </div>
