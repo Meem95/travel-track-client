@@ -1,13 +1,52 @@
 import { IoAddCircleSharp } from "react-icons/io5";
+ import Swal from "sweetalert2";
+
+
 const AddTouristSpot = () => {
+    const handleAddLocation = event => {
+        event.preventDefault();
+
+        const form = event.target;
+
+        const tourists_spot_name = form.tourists_spot_name.value;
+        const country_Name = form.country_Name.value;
+        const average_cost = form.average_cost.value;
+        const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
+        const location = form.location.value;
+        const seasonality = form.seasonality.value;
+        const image = form.image.value;
+        const travel_time = form.travel_time.value;
+        const short_description = form.short_description.value;
+
+        const newLocation = { tourists_spot_name, country_Name, average_cost, totalVisitorsPerYear, location, seasonality,image, travel_time, short_description}
+
+        console.log(newLocation);
+
+        //send data to the server
+        fetch('http://localhost:5000/location', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newLocation)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if(data.insertedId){
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Location Added Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                      })
+                }
+            })
+    }
+
   return (
     <div>
       <section className="p-6 text-black">
-        <form
-          noValidate=""
-          action=""
-          className=" flex flex-col mx-auto space-y-12"
-        >
           <div className="shadow-lg p-5 border dark:bg-[#1a2641d5]">
             {/* Heading */}
             <div className="mt-5 mb-8 flex  justify-center">
@@ -15,11 +54,9 @@ const AddTouristSpot = () => {
             <div> <p className="text-center text-3xl font-bold">
                  Add Your Tourist Spot
               </p></div>
-            
-             
             </div>
-            {/* form */}
-            <form>
+            <form onSubmit={handleAddLocation}>
+            
               <div className="flex gap-8 ">
                 <div className="flex-1">
                   <label className="block mb-2 dark:text-white" htmlFor="name">
@@ -84,7 +121,7 @@ const AddTouristSpot = () => {
                   />
                   <label
                     className="block mt-4 mb-2 dark:text-white"
-                    htmlFor="totaVisitorsPerYear"
+                    htmlFor="totalVisitorsPerYear"
                   >
                    Total Visitors Per Year
                   </label>
@@ -92,7 +129,7 @@ const AddTouristSpot = () => {
                     className="w-full p-2 border rounded-md focus:outline-[#FF8900]"
                     type="text"
                     placeholder="Enter Total Visitors Per Year"
-                    id="totaVisitorsPerYear"
+                    id="totalVisitorsPerYear"
                     name="totalVisitorsPerYear"
                   />
                 </div>
@@ -130,10 +167,7 @@ const AddTouristSpot = () => {
                   </label>
                   <input
                     className="w-full p-2 border rounded-md focus:outline-[#FF8900]"
-                    maxLength={5}
-                    max={5}
-                    min={0}
-                    type="number"
+                    type="text"
                     placeholder=" (Like Summer/Winter)"
                     id="seasonality"
                     name="seasonality"
@@ -167,7 +201,7 @@ const AddTouristSpot = () => {
               />
             </form>
           </div>
-        </form>
+       
       </section>
     </div>
   );
