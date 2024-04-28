@@ -1,4 +1,6 @@
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+AOS.init();
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { MdSupervisedUserCircle } from "react-icons/md";
 import {  CiLocationOn } from "react-icons/ci";
@@ -32,7 +34,7 @@ const TouristSpot = ({ cards }) => {
                         </div>
                         <div className="flex justify-between my-4">
                         <div><p> <span className=" font-bold text-2xl">${average_cost}</span>/ Person</p></div>
-                            <Link to={`/residential/${_id}`}>
+                            <Link to={`/tourist-spot-details/${_id}`}>
                                 <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-md hover:bg-[#ff9811]  bg-[#FF8900] text-white font-bold">View Details</button>
                             </Link>
                         </div>
