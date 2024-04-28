@@ -134,28 +134,56 @@ const Navbar = () => {
             </ul>
           )}
           </div>
+          <NavLink to={'/'} className="btn btn-ghost text-xl">
           <a className="btn btn-ghost text-xl">
             <img className="w-28" src={logo} />
           </a>
+          </NavLink>
         </div>
         <div className="navbar-center hidden mx-auto lg:flex">
           <ul className="menu menu-horizontal px-1">
-          <NavLink to={'/'}>  <li>
+          <NavLink to={'/'} className={({ isActive }) =>
+                  isActive
+                    ? 'text-[#ff8900] font-bold '
+                    : 'font-bold text-[#2f400e] '}>  <li>
               <a>Home</a>
             </li></NavLink>
-           
-            <li>
+           <NavLink to={'/all-tourist-spot'} className={({ isActive }) =>
+                  isActive
+                    ? 'text-[#ff8900] font-bold '
+                    : 'font-bold text-[#2f400e] '}>
+           <li>
               <a>All Tourists Spot</a>
             </li>
+            </NavLink>
+            
+            <NavLink to={'/add-tourist-spot'} className={({ isActive }) =>
+                  isActive
+                    ? 'text-[#ff8900] font-bold '
+                    : 'font-bold text-[#2f400e] '}>
             <li>
               <a>Add Tourists Spot</a>
             </li>
+            </NavLink>
+            
+            <NavLink to={'/my-list'} className={({ isActive }) =>
+                  isActive
+                    ? 'text-[#ff8900] font-bold '
+                    : 'font-bold text-[#2f400e] '}>
             <li>
               <a>My List</a>
             </li>
+            </NavLink>
+          
+            <NavLink to={'/contact'} className={({ isActive }) =>
+                  isActive
+                    ? 'text-[#ff8900] font-bold '
+                    : 'font-bold text-[#2f400e] '}>
             <li>
               <a>Contact</a>
             </li>
+            </NavLink>
+            
           </ul>
         </div>
         <div className=" space-x-1">

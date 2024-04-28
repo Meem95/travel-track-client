@@ -5,6 +5,7 @@ import Root from "../layouts/Root";
 import ErrorPage from "../pages/ErrorPage";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import AddTouristSpot from "../pages/TouristSpot/AddTouristSpot";
 
 
 const router = createBrowserRouter([
@@ -15,6 +16,11 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>, 
+            },
+            
+            {
+                path: '/add-tourist-spot',
+                element: <AddTouristSpot></AddTouristSpot>
             },
             
             {
