@@ -3,7 +3,7 @@ import { MdDeleteSweep } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Mylist = ({ listData, setMyList, list, index }) => {
+const Mylist = ({listData, item, list, index }) => {
     //console.log(list._id)
     const handleDelete = _id => {
         Swal.fire({
@@ -28,8 +28,8 @@ const Mylist = ({ listData, setMyList, list, index }) => {
                                 'Your Location has been deleted.',
                                 'success'
                             )
-                            const remaining = listData.filter(loc => loc._id !== _id);
-                            setMyList(remaining);
+                            const remaining = item.filter(loc => loc._id !== _id);
+                            listData(remaining);
                         }
                     })
 

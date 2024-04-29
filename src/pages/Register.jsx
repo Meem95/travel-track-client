@@ -2,6 +2,8 @@ import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
 
@@ -12,12 +14,12 @@ const Register = () => {
     console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
 
-    const name = form.get("name");
+    const displayName = form.get("displayName");
     const email = form.get("email");
     const photoURL = form.get("photoURL");
     const password = form.get("password");
     
-    console.log(name, photoURL, email, password);
+    console.log(displayName, photoURL, email, password);
     
      // Password validation
      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -32,7 +34,7 @@ const Register = () => {
               console.log(result);
               const createdAt = result.user?.metadata?.creationTime;
               const user = { email, createdAt: createdAt };
-              fetch('http://localhost:5000/user', {
+              fetch('https://b9a10-tour-server-lcstdoy8j-fatemas-projects-345c572b.vercel.app/user', {
                   method: 'POST',
                   headers: {
                       'content-type': 'application/json'
@@ -45,17 +47,23 @@ const Register = () => {
                           console.log('user added to the database')
                       }
                   })
-        
-
               updateProfile(result.user,
-                 {name,photoURL}
+                 {displayName,photoURL}
                  
               ).then(() => {
-               alert('Registration successful!');
+                Swal.fire({
+                  title: 'Success!',
+                  text: 'Login Successfully',
+                  icon: 'success',
+                  confirmButtonText: 'Cool'
+                })
+          
                 // navigate after login
                 Navigate(location?.state ? location.state : '/');
               }).catch((error) => {
                 console.log(error)
+                
+                
               });
                 console.log("value",result.user)
                
@@ -67,6 +75,9 @@ const Register = () => {
 
   return (
     <div>
+     <Helmet>
+        <title> Travel Trek | Registrations</title>
+      </Helmet>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-[#dfe0e6] text-black mx-auto my-14">
         <h1 className="text-2xl font-bold text-center">Registrations</h1>
         <form onSubmit={handleRegister} noValidate="" action="" className="space-y-6">
@@ -76,7 +87,7 @@ const Register = () => {
             </label>
             <input
               type="text"
-              name="name"
+              name="displayName"
               id="username"
               placeholder="Username"
               className="w-full px-4 py-3 rounded-md border-gray-700 bg-white text-black focus:border-violet-400"

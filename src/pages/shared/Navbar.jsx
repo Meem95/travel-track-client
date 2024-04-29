@@ -258,7 +258,7 @@ const Navbar = () => {
             
             >
               <div className="w-16 rounded-full my-anchor-element">
-                <img src={user?.photoURL || userProfile } alt="User Avatar"   
+                <img src={user.photoURL || userProfile } alt="User Avatar"   
                />
              
               </div>

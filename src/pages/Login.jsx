@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import app from "../firebase/firebase.config";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 const Login = () => {
@@ -40,7 +41,7 @@ const Login = () => {
       Swal.fire({
         title: 'error!',
         text: 'Invalid email or password. Please try again',
-        icon: 'success',
+        icon: 'error',
         confirmButtonText: 'Cool'
       })
     });
@@ -63,7 +64,7 @@ const Login = () => {
       Swal.fire({
         title: 'error!',
         text: 'Invalid email or password. Please try again',
-        icon: 'success',
+        icon: 'error',
         confirmButtonText: 'Cool'
       })
       console.log(error.message);
@@ -99,7 +100,7 @@ const Login = () => {
             Swal.fire({
               title: 'error!',
               text: 'Invalid email or password. Please try again',
-              icon: 'success',
+              icon: 'error',
               confirmButtonText: 'Sad'
             })
             
@@ -107,6 +108,9 @@ const Login = () => {
   };
     return (
         <div>
+        <Helmet>
+        <title> Travel Trek | Login</title>
+      </Helmet>
              <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-[#dfe0e6] text-black mx-auto my-14">
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form onSubmit={handleLogin} noValidate="" action="" className="space-y-6">

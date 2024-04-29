@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import TouristSpot from "./Home/TouristSpot";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const AllTouristSpots = () => {
   //const touristSpots = useLoaderData();
@@ -16,6 +17,9 @@ const AllTouristSpots = () => {
   };
   return (
     <div>
+      <Helmet>
+      <title> Travel Trek |Tourists Spots</title>
+    </Helmet>
       <div className="min-h-screen max-w-7xl mx-auto">
         <section className="py-6 sm:py-12 ">
           <div className=" p-6 mx-auto space-y-5">

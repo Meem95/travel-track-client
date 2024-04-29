@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { IoAddCircleSharp } from "react-icons/io5";
  import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 
 const AddTouristSpot = () => {
@@ -28,7 +29,7 @@ const AddTouristSpot = () => {
         console.log(newLocation);
 
         //send data to the server
-        fetch('http://localhost:5000/location', {
+        fetch('https://b9a10-tour-server-lcstdoy8j-fatemas-projects-345c572b.vercel.app/location', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -37,7 +38,9 @@ const AddTouristSpot = () => {
         })
             .then(res => res.json())
             .then(data => {
+             
                 console.log(data);
+                form.reset();
                 if(data.insertedId){
                     Swal.fire({
                         title: 'Success!',
@@ -51,6 +54,9 @@ const AddTouristSpot = () => {
 
   return (
     <div>
+    <Helmet>
+    <title> Travel Trek | Add Your Tourist Spot</title>
+  </Helmet>
       <section className="p-6 text-black">
           <div className="shadow-lg p-5 border dark:bg-[#1a2641d5]">
             <div className="mt-5 mb-8 flex  justify-center">
@@ -131,7 +137,7 @@ const AddTouristSpot = () => {
                   </label>
                   <input
                     className="w-full p-2 border rounded-md focus:outline-[#FF8900]"
-                    type="text"
+                    type="number"
                     placeholder="Enter Total Visitors Per Year"
                     id="totalVisitorsPerYear"
                     name="totalVisitorsPerYear"

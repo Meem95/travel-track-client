@@ -1,9 +1,10 @@
+import { Helmet } from "react-helmet";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { useLoaderData } from "react-router-dom";
  import Swal from "sweetalert2";
 const UpdateTouristSpot = () => {
     const updateMyLocation = useLoaderData();
-    const {   tourists_spot_name, country_Name, average_cost, totalVisitorsPerYear, location, seasonality,image, travel_time, short_description } = updateMyLocation;
+    const { _id,  tourists_spot_name, country_Name, average_cost, totalVisitorsPerYear, location, seasonality,image, travel_time, short_description } = updateMyLocation;
     const handleUpdatedLocation = event => {
         event.preventDefault();
 
@@ -24,7 +25,7 @@ const UpdateTouristSpot = () => {
         console.log(updateLocation);
 
         //send data to the server
-        fetch('http://localhost:5000/location', {
+        fetch(`https://b9a10-tour-server-lcstdoy8j-fatemas-projects-345c572b.vercel.app/location/${_id}`, {
             method: 'Put',
             headers: {
                 'content-type': 'application/json'
@@ -34,7 +35,7 @@ const UpdateTouristSpot = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if(data.insertedId){
+                if(data.modifiedCount > 0){
                     Swal.fire({
                         title: 'Success!',
                         text: 'Location Updated Successfully',
@@ -46,6 +47,9 @@ const UpdateTouristSpot = () => {
     }
     return (
         <div>
+         <Helmet>
+        <title> Travel Trek | Update Tourist Spot</title>
+      </Helmet>
               <section className="p-6 text-black">
           <div className="shadow-lg p-5 border dark:bg-[#1a2641d5]">
             <div className="mt-5 mb-8 flex  justify-center">

@@ -36,7 +36,7 @@ const Footer = () => {
 				</div>
 				
 			</a>
-            <p className=" text-sm w-1/2 text-justify ">Lorem ipsum dolor sit amet, consectetur adipiscing elitsed do eiusmod tempororem ipsum dolor sit am econsect ametconsectetetur adipiscing.</p>
+            <p className=" text-sm w-1/2 text-justify ">Discover amazing destinations on our travel website footer. Let us be your compass to incredible adventures and unforgettable experiences around the globe.</p>
 		</div>
 		<div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
 			<div className="space-y-3">

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { CiLocationOn } from "react-icons/ci";
 import { useLoaderData } from "react-router-dom";
 
@@ -7,6 +8,9 @@ const TouristSpotDetails = () => {
 
   return (
     <div className="min-h-screen max-w-7xl mx-auto text-black my-10">
+    <Helmet>
+    <title> Travel Trek | {tourists_spot_name}</title>
+  </Helmet>
       <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-2xl">
         <div>
           <img className="w-full rounded-lg" src={image} alt={tourists_spot_name} />

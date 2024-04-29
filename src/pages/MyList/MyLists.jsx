@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import Mylist from "./Mylist";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 
 
@@ -16,7 +17,7 @@ const MyLists = () => {
   const [item, setItem] = useState([]);
   // console.log(user);
   useEffect(() => {
-    fetch(`http://localhost:5000/myLocation/${user?.email}`)
+    fetch(`https://b9a10-tour-server-lcstdoy8j-fatemas-projects-345c572b.vercel.app/myLocation/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setItem(data);
@@ -24,13 +25,16 @@ const MyLists = () => {
   }, [user]);
     
   return (
+    
     <div className="min-h-screen max-w-7xl mx-auto text-black my-10 shadow-2xl p-5">
+<Helmet>
+    <title> Travel Trek | My list</title>
+  </Helmet>
       <div className="overflow-x-auto">
       {
         !user? <p>no data found</p>
         :
         <table className="table">
-          {/* head */}
           <thead>
             <tr>
               <th></th>
@@ -42,15 +46,13 @@ const MyLists = () => {
             </tr>
           </thead>
           <tbody>
-          
-
-
             {
                 item.map((list , index)=> <Mylist
             key={list._id}
             list={list}
-            listData={list}
-           // setMyList={setMyList}
+            listData={setItem}
+            item={item}
+            
             index={index + 1}
             ></Mylist>)
         }
