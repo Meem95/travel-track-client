@@ -17,18 +17,18 @@ Saying About Us</h1>
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper" loop={true} >
         <SwiperSlide>
           <div className="testimonial-box bg-white rounded-lg shadow-md p-4 md:w-1/2 lg:w-11/12 mx-auto mb-4">
-            {/* Top Section */}
+           
             <div className="box-top flex flex-col md:flex-row items-center justify-between mb-4">
-              {/* Profile Section */}
+            
               <div className="profile flex items-center mb-2 md:mb-0">
-                {/* Profile Image */}
+                
                 <div className="profile-img mr-2">
                   <img
                     src={r1}
                     alt="Profile"
                   />
                 </div>
-                {/* Name and Username */}
+               
                 <div className="name-user">
                   <strong>Liam Mendes</strong>
                   <p>@liammendes</p>
