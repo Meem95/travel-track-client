@@ -1,5 +1,30 @@
+import { useEffect, useState } from 'react';
 import logo from '../../assets/images/logo.png';
+import { Link } from 'react-router-dom';
 const Footer = () => {
+	const [title, setTitle] = useState([]);
+	useEffect(() => {fetch("http://localhost:5000/location")
+		.then((response) => response.json())
+		.then((data) => setTitle(data.slice(0, 6)));
+	
+	}, []);
+	const [countrytTitle, setCountryTitle] = useState([]);
+	useEffect(() => {fetch("http://localhost:5000/country")
+		.then((response) => response.json())
+		.then((data) => setCountryTitle(data.slice(0, 6)));
+	
+	}, []);
+	const truncateString = (str, numWords) => {
+        const words = str.split(' ');
+        if (words.length > numWords) {
+            return words.slice(0, numWords).join(' ') + '...';
+        } else {
+            return str;
+        }
+    
+    };
+	
+   
     return (
         <div>
             <footer className="px-4 divide-y font-semibold max-w-7xl mx-auto">
@@ -15,49 +40,35 @@ const Footer = () => {
 		</div>
 		<div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
 			<div className="space-y-3">
-				<h3 className="tracking-wide uppercase text-gray-50">Product</h3>
+				<h3 className="tracking-wide uppercase ">Locations</h3>
 				<ul className="space-y-1">
-					<li>
-						<a rel="noopener noreferrer" href="#">Features</a>
-					</li>
-					<li>
-						<a rel="noopener noreferrer" href="#">Integrations</a>
-					</li>
-					<li>
-						<a rel="noopener noreferrer" href="#">Pricing</a>
-					</li>
-					<li>
-						<a rel="noopener noreferrer" href="#">FAQ</a>
-					</li>
+				{title.map((location) => (
+					<li key={location.id} ><Link to={`/location/${location._id}`}>{truncateString(location.tourists_spot_name, 2)}</Link> </li>
+                                ))}
 				</ul>
 			</div>
 			<div className="space-y-3">
-				<h3 className="tracking-wide uppercase text-gray-50">Company</h3>
+				<h3 className="tracking-wide uppercase">Country</h3>
 				<ul className="space-y-1">
-					<li>
-						<a rel="noopener noreferrer" href="#">Privacy</a>
-					</li>
-					<li>
-						<a rel="noopener noreferrer" href="#">Terms of Service</a>
-					</li>
+				{countrytTitle.map((country) => (
+					<li key={country.id} ><Link to={`/country/${country._id}`}>{truncateString(country.country_Name, 2)}</Link> </li>
+                                ))}
 				</ul>
 			</div>
 			<div className="space-y-3">
-				<h3 className="uppercase text-gray-50">Developers</h3>
+				<h3 className="uppercase ">Quick Link</h3>
 				<ul className="space-y-1">
-					<li>
-						<a rel="noopener noreferrer" href="#">Public API</a>
-					</li>
-					<li>
-						<a rel="noopener noreferrer" href="#">Documentation</a>
-					</li>
-					<li>
-						<a rel="noopener noreferrer" href="#">Guides</a>
-					</li>
+				<Link to="/all-tourist-spot"><li>
+						<a rel="noopener noreferrer" href="#">Add Tourists Spot </a>
+					</li></Link>
+				<Link to="/contact"><li>
+						<a rel="noopener noreferrer" href="#">Contact</a>
+					</li></Link>
+					
 				</ul>
 			</div>
 			<div className="space-y-3">
-				<div className="uppercase text-gray-50">Social media</div>
+				<div className="uppercase">Social media</div>
 				<div className="flex justify-start space-x-3">
 					<a rel="noopener noreferrer" href="#" title="Facebook" className="flex items-center p-1">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5 fill-current">
@@ -78,7 +89,7 @@ const Footer = () => {
 			</div>
 		</div>
 	</div>
-	<div className="py-6 text-sm text-center text-gray-400">© 1968 Company Co. All rights reserved.</div>
+	<div className="py-6 text-sm text-center text-gray-400">© Travel Trek All rights reserved.</div>
 </footer>
         </div>
     );

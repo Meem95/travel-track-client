@@ -15,9 +15,8 @@ const TouristSpot = ({ cards }) => {
                 <div className="card  bg-base-100 shadow-2xl relative p-4">
                 <div className="flex  space-x-3 my-2"> <div className="p-2 bg-[#FF8900] rounded-full text-white font-extrabold text-lg"><CiLocationOn /> </div><span className="text-lg font-medium"> {location}</span></div>
                     <div className="relative">
-                        <span className="absolute top-0 left-0 bg-[#2f400e] text-white rounded-2xl p-1 w-16 mt-3 font-bold text-center">{status}</span>
                         <figure className="">
-                            <img className="rounded-md lg:h-60  md:h-56" src={image} alt="{country_Name}" />
+                            <img className="rounded-md lg:h-60  md:h-56" src={image} alt={country_Name} />
                         </figure>
                     </div>
                    

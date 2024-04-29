@@ -25,7 +25,7 @@ const UpdateTouristSpot = () => {
 
         //send data to the server
         fetch('http://localhost:5000/location', {
-            method: 'POST',
+            method: 'Put',
             headers: {
                 'content-type': 'application/json'
             },

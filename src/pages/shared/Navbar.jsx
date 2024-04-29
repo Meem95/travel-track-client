@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const handleToggle = (e) =>{
       if(e.target.checked){
-          setTheme('synthwave')
+          setTheme('dark')
       }else{
           setTheme('light')
       }
@@ -157,7 +157,7 @@ const Navbar = () => {
           )}
           </div>
           <NavLink to={'/'} className="btn btn-ghost text-xl">
-          <a className="btn btn-ghost text-xl">
+          <a className="">
             <img className="w-28" src={logo} />
           </a>
           </NavLink>

@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import Contact from "../pages/Contact";
 import Root from "../layouts/Root";
-import ErrorPage from "../pages/ErrorPage";
+// import ErrorPage from "../pages/ErrorPage";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import AddTouristSpot from "../pages/TouristSpot/AddTouristSpot";
@@ -11,6 +11,7 @@ import AllTouristSpots from "../pages/AllTouristSpots";
 import TouristSpotDetails from "../pages/TouristSpot/TouristSpotDetails";
 import MyLists from "../pages/MyList/MyLists";
 import UpdateTouristSpot from "../pages/UpdateTouristSpot";
+import NotFoundPage from "../pages/NotFoundPage";
 
 
 const router = createBrowserRouter([
@@ -39,8 +40,7 @@ const router = createBrowserRouter([
             {
                 path: '/tourist-spot-details/:id',
                 element:<PrivateRoute> <TouristSpotDetails></TouristSpotDetails></PrivateRoute>,
-                loader:()=>fetch('http://localhost:5000/location')
-
+                loader:({params})=>fetch(`http://localhost:5000/location/${params.id}`)
             },
             
             {
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
            
             {
               path: '*',
-              element: <ErrorPage/>
+              element: <NotFoundPage/>
             }
         ]
     }   

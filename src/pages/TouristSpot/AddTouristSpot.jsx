@@ -21,8 +21,9 @@ const AddTouristSpot = () => {
         const travel_time = form.travel_time.value;
         const short_description = form.short_description.value;
         const email = user.email;
+        const name = user.displayName;
 
-        const newLocation = { tourists_spot_name, country_Name, average_cost, totalVisitorsPerYear, location, seasonality,image, travel_time, short_description,email}
+        const newLocation = { tourists_spot_name, country_Name, average_cost, totalVisitorsPerYear, location, seasonality,image, travel_time, short_description,email ,name}
 
         console.log(newLocation);
 

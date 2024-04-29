@@ -5,7 +5,7 @@ import Review from "./Home/Review";
 import TouristSpot from "./Home/TouristSpot";
 import { useLoaderData } from "react-router-dom";
 import Countries from "./Home/Countries";
-
+import { Fade } from "react-awesome-reveal";
 
 const Home = () => {
   const allData = useLoaderData();
@@ -26,7 +26,9 @@ const Home = () => {
       <div>
         <Slider></Slider>
       </div>
-      <div className="min-h-screen max-w-7xl mx-auto">
+      
+      <div className=" max-w-7xl mx-auto">
+      <Fade   duration="2000">
         <section className="py-6 sm:py-12 ">
           <div className=" p-6 mx-auto space-y-5">
             <div className="my-6 animate__animated animate__bounce">
@@ -44,8 +46,12 @@ const Home = () => {
             </div>
           </div>
         </section>
+        </Fade>
       </div>
-      <div>
+
+   
+
+
       <div className=" max-w-7xl mx-auto">
         <section className="py-6 sm:py-12 ">
           <div className=" p-6 mx-auto space-y-4">
@@ -65,13 +71,18 @@ const Home = () => {
           </div>
         </section>
       </div>
-      </div>
+     
+      <Fade  direction="left" duration="2000">
       <div>
         <Gallery></Gallery>
       </div>
+      </Fade>
+      <Fade  direction="left" duration="2000">
       <div>
         <Review></Review>
       </div>
+      </Fade>
+      
     </div>
   );
 };
