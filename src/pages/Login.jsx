@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
@@ -9,11 +9,13 @@ import Swal from "sweetalert2";
 const Login = () => {
   const auth =getAuth(app);
   const [user ,setUser] = useState(null);
+  console.log(user)
   const { signIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   console.log('location i n the login page', location)
   const provider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const handleGoogleSignIn = ()=> {
     signInWithPopup(auth, provider)
@@ -23,7 +25,7 @@ const Login = () => {
       const loggedInUser = result.user;
       console.log(loggedInUser);
       setUser(loggedInUser);
-    // alert('Login successful!');
+   
       Swal.fire({
           title: 'Success!',
           text: 'Login Successfully',
@@ -41,6 +43,30 @@ const Login = () => {
         icon: 'success',
         confirmButtonText: 'Cool'
       })
+    });
+  }
+  const handleGithubSignIn = ()=> {
+    signInWithPopup(auth, githubProvider)
+    .then((result) => {
+      const loggedInUser = result.user;
+      console.log(loggedInUser);
+      setUser(loggedInUser);
+      Swal.fire({
+        title: 'Success!',
+        text: 'Login Successfully',
+        icon: 'success',
+        confirmButtonText: 'Cool'
+      })
+
+      navigate(location?.state ? location.state : '/');
+    }).catch((error) => {
+      Swal.fire({
+        title: 'error!',
+        text: 'Invalid email or password. Please try again',
+        icon: 'success',
+        confirmButtonText: 'Cool'
+      })
+      console.log(error.message);
     });
   }
 
@@ -129,7 +155,7 @@ const Login = () => {
             </svg>
           </button>
 
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button onClick={handleGithubSignIn} aria-label="Log in with GitHub" className="p-3 rounded-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"

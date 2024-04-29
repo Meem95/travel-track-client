@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { IoAddCircleSharp } from "react-icons/io5";
  import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const AddTouristSpot = () => {
+  const { user } = useContext(AuthContext);
     const handleAddLocation = event => {
         event.preventDefault();
 
@@ -17,8 +20,9 @@ const AddTouristSpot = () => {
         const image = form.image.value;
         const travel_time = form.travel_time.value;
         const short_description = form.short_description.value;
+        const email = user.email;
 
-        const newLocation = { tourists_spot_name, country_Name, average_cost, totalVisitorsPerYear, location, seasonality,image, travel_time, short_description}
+        const newLocation = { tourists_spot_name, country_Name, average_cost, totalVisitorsPerYear, location, seasonality,image, travel_time, short_description,email}
 
         console.log(newLocation);
 
