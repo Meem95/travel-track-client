@@ -1,6 +1,4 @@
-// import { TbEdit } from "react-icons/tb";
-// import { MdDeleteSweep } from "react-icons/md";
-import {  useLoaderData } from "react-router-dom";
+
 import { useContext, useEffect, useState } from "react";
 import Mylist from "./Mylist";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -12,7 +10,7 @@ const MyLists = () => {
    
 
   //  const [ MyList,setMyList] =useState(mylists)
-//
+
     //const { user } = useContext(AuthContext);
     const { user } =  useContext(AuthContext) || {};
   const [item, setItem] = useState([]);

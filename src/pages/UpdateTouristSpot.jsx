@@ -116,7 +116,7 @@ const UpdateTouristSpot = () => {
                   </label>
                   <input
                     className="w-full p-2 border rounded-md focus:outline-[#FF8900]"
-                    type="text"
+                    type="number"
                     placeholder="Enter Average Cost"
                     id="average_cost"
                     name="average_cost"
