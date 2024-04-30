@@ -7,7 +7,16 @@ import {  CiLocationOn } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 const TouristSpot = ({ cards }) => {
-    const { tourists_spot_name, country_Name, average_cost, totalVisitorsPerYear, location, seasonality,image, travel_time, _id} = cards;
+    const { tourists_spot_name, country_Name, average_cost, totalVisitorsPerYear, location, seasonality,image, travel_time, _id,short_description} = cards;
+    const truncateString = (str, numWords) => {
+        const words = str.split(' ');
+        if (words.length > numWords) {
+            return words.slice(0, numWords).join(' ') + '...';
+        } else {
+            return str;
+        }
+    
+    };
 
     return (
         <div>
@@ -30,6 +39,11 @@ const TouristSpot = ({ cards }) => {
                             <div className="text-black flex p-1 font-medium"><MdSupervisedUserCircle />{totalVisitorsPerYear} </div>
                             <div className="text-black flex p-1 font-medium">{travel_time} </div>
                             <div className="text-black flex p-1 font-medium"> <TiWeatherPartlySunny /> {seasonality} </div>
+                        </div>
+                        <div className='my-4'>
+                            <p>
+                                {truncateString(short_description,11)}
+                            </p>
                         </div>
                         <div className="flex justify-between my-4">
                         <div><p> <span className=" font-bold text-2xl">${average_cost}</span>/ Person</p></div>

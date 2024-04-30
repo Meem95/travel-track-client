@@ -83,7 +83,7 @@ const Navbar = () => {
                 Home
               </NavLink>
               <NavLink
-                to="/about"
+                to={'/all-tourist-spot'} 
                 className={({ isActive }) =>
                   isActive
                     ? 'text-[#2f400e] font-bold btn-outline btn-[#2f400e] btn '
@@ -92,8 +92,7 @@ const Navbar = () => {
               >
                 All Tourists Spot
               </NavLink>
-              {
-                ! user ?
+              
                 <NavLink to="/login" 
                 className={({ isActive }) =>
                   isActive
@@ -102,9 +101,9 @@ const Navbar = () => {
                 }
               >
            Add Tourists Spot
-          </NavLink> :
+          </NavLink> 
           <NavLink
-                to="/blog"
+                to={'/my-list'}
                 className={({ isActive }) =>
                   isActive
                     ? 'text-[#2f400e] font-bold btn-outline btn-[#2f400e] btn '
@@ -113,11 +112,7 @@ const Navbar = () => {
               >
                 My List
               </NavLink>
-              }
-
-              
-
-
+             
 
               <NavLink
                 to="/contact"
@@ -127,7 +122,7 @@ const Navbar = () => {
                     : 'font-bold text-[#2f400e] mt-4'
                 }
               >
-                Contact Us
+                Contact 
               </NavLink>
               {
                 

@@ -1,6 +1,6 @@
 import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
@@ -8,7 +8,8 @@ import { Helmet } from "react-helmet";
 const Register = () => {
 
   const { createUser } = useContext(AuthContext);
-
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     console.log(e.currentTarget);
@@ -65,7 +66,7 @@ const Register = () => {
                 })
           
                 // navigate after login
-                Navigate(location?.state ? location.state : '/');
+                navigate(location?.state ? location.state : '/');
               }).catch((error) => {
                 console.log(error)
                 
