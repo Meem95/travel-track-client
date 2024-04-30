@@ -2,10 +2,12 @@ import { useState } from "react";
 import { PropTypes } from "prop-types";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 AOS.init();
 
-const Countries = ({ country }) => {
-  const { country_Name, description, image } = country;
+const Countries = ({ country  }) => {
+  const { country_Name, description, image,  } = country;
+  // console.log("locationas",locations)
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -24,7 +26,8 @@ const Countries = ({ country }) => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <figure>
+        <Link to={`/country-name/${encodeURIComponent(country_Name)}`}>
+        <figure>
             <img className=" w-full lg:h-60  md:h-56" src={image} alt={country_Name} />
           </figure>
           {isHovered && (
@@ -35,6 +38,8 @@ const Countries = ({ country }) => {
               </div>
             </div>
           )}
+        </Link>
+          
         </div>
       
     </div>

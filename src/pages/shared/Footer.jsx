@@ -3,13 +3,13 @@ import logo from '../../assets/images/logo.png';
 import { Link } from 'react-router-dom';
 const Footer = () => {
 	const [title, setTitle] = useState([]);
-	useEffect(() => {fetch("http://localhost:5000/location")
+	useEffect(() => {fetch("https://b9a10-tour-server.vercel.app/location")
 		.then((response) => response.json())
 		.then((data) => setTitle(data.slice(0, 6)));
 	
 	}, []);
 	const [countrytTitle, setCountryTitle] = useState([]);
-	useEffect(() => {fetch("http://localhost:5000/country")
+	useEffect(() => {fetch("https://b9a10-tour-server.vercel.app/country")
 		.then((response) => response.json())
 		.then((data) => setCountryTitle(data.slice(0, 6)));
 	
@@ -43,7 +43,8 @@ const Footer = () => {
 				<h3 className="tracking-wide uppercase ">Locations</h3>
 				<ul className="space-y-1">
 				{title.map((location) => (
-					<li key={location.id} ><Link to={`/location/${location._id}`}>{truncateString(location.tourists_spot_name, 2)}</Link> </li>
+					
+					<li key={location._id} ><Link to={`/tourist-spot-details/${location._id}`}>{truncateString(location.tourists_spot_name, 2)}</Link> </li>
                                 ))}
 				</ul>
 			</div>
@@ -51,7 +52,8 @@ const Footer = () => {
 				<h3 className="tracking-wide uppercase">Country</h3>
 				<ul className="space-y-1">
 				{countrytTitle.map((country) => (
-					<li key={country.id} ><Link to={`/country/${country._id}`}>{truncateString(country.country_Name, 2)}</Link> </li>
+					
+					<li key={country.id} ><Link to={`/country-name/${encodeURIComponent(country.country_Name)}`} >{truncateString(country.country_Name, 2)}</Link> </li>
                                 ))}
 				</ul>
 			</div>

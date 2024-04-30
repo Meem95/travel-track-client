@@ -17,7 +17,7 @@ const MyLists = () => {
   const [item, setItem] = useState([]);
   // console.log(user);
   useEffect(() => {
-    fetch(`https://b9a10-tour-server-lcstdoy8j-fatemas-projects-345c572b.vercel.app/myLocation/${user?.email}`)
+    fetch(`https://b9a10-tour-server.vercel.app/myLocation/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setItem(data);

@@ -11,7 +11,7 @@ const TouristSpotDetails = () => {
     <Helmet>
     <title> Travel Trek | {tourists_spot_name}</title>
   </Helmet>
-      <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-2xl">
+      <div className="container max-w-5xl px-10 py-6 mx-auto rounded-lg shadow-2xl">
         <div>
           <img className="w-full rounded-lg" src={image} alt={tourists_spot_name} />
         </div>
@@ -36,10 +36,11 @@ const TouristSpotDetails = () => {
           >
             {tourists_spot_name}
           </a>
-          <div className="mt-2" style={{ maxHeight: "200px", overflowY: "auto" }}>
+         
+        </div>
+        <div className="mt-2 text-wrap " >
             <p>{short_description}</p>
           </div>
-        </div>
         <div className="flex items-center justify-between mt-4">
           <div className="overflow-x-auto">
             <table className="table">
@@ -61,22 +62,7 @@ const TouristSpotDetails = () => {
               </tbody>
             </table>
           </div>
-          <div>
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="flex items-center"
-            >
-              <img
-                src="https://source.unsplash.com/50x50/?portrait"
-                alt="avatar"
-                className="object-cover w-10 h-10 mx-4 rounded-full bg-gray-500"
-              />
-              <span className="hover:underline text-gray-400">
-                Leroy Jenkins
-              </span>
-            </a>
-          </div>
+         
         </div>
       </div>
     </div>

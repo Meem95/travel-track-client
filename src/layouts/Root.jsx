@@ -5,7 +5,7 @@ import Footer from "../pages/shared/Footer";
 const Root = () => {
   return (
     <div>
-      <div className="max-w-full dark:bg-gray-900 mx-auto font-poppins shadow-2xl">
+      <div className="max-w-full sticky top-0 z-10 backdrop-blur-xl bg-black/20 dark:bg-gray-900 mx-auto font-poppins shadow-2xl">
         <Navbar></Navbar>
       
       </div>

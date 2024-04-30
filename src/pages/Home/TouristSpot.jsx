@@ -11,8 +11,8 @@ const TouristSpot = ({ cards }) => {
 
     return (
         <div>
-              <div className="  p-4" data-aos="zoom-in" data-aos-duration="1500">
-                <div className="card  bg-base-100 shadow-2xl relative p-4">
+              <div className="   p-4" data-aos="zoom-in" data-aos-duration="1500">
+                <div className="card bg-base-100 shadow-2xl relative p-4">
                 <div className="flex  space-x-3 my-2"> <div className="p-2 bg-[#FF8900] rounded-full text-white font-extrabold text-lg"><CiLocationOn /> </div><span className="text-lg font-medium"> {location}</span></div>
                     <div className="relative">
                         <figure className="">

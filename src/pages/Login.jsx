@@ -1,6 +1,6 @@
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import app from "../firebase/firebase.config";
 import Swal from "sweetalert2";
@@ -171,6 +171,7 @@ const Login = () => {
         </div>
         <p className="text-xs text-center sm:px-6 text-black">
           Do not have an account?
+          <Link to="/register">
           <a
             rel="noopener noreferrer"
             href="#"
@@ -179,6 +180,8 @@ const Login = () => {
             {" "}
             Sign up
           </a>
+          </Link>
+         
         </p>
       </div>
         </div>

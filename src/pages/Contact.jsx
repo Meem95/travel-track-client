@@ -15,7 +15,7 @@ const Contact = () => {
   }, []); 
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto mt-16">
+    <div className="min-h-screen  mx-auto mt-16">
     <Helmet>
    <title> Travel Trek | Contact Us</title>
    </Helmet>
@@ -57,7 +57,7 @@ const Contact = () => {
             </button>
           </form>
       </div>
-      <section className="py-6 text-black mt-12  text-center max-w-4xl mx-auto">
+      <section className="py-6 text-black mt-12  text-center w-full">
         <div className="  grid-cols-1 px-6 lg:px-8 md:grid-cols-2 md:divide-x">
           <div className="py-6 md:py-0 md:px-6">
             <h1 className="text-4xl font-bold">Get in touch</h1>
@@ -80,7 +80,7 @@ const Contact = () => {
                   </Marker>
                 </MapContainer>
               </div>
-              <p className="flex items-center">
+              <p className="flex items-center justify-center text-lg font-semibold">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -91,7 +91,7 @@ const Contact = () => {
                 </svg>
                 <span>+1 3029835847</span>
               </p>
-              <p className="flex items-center">
+              <p className="flex items-center justify-center text-lg font-semibold">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"

@@ -12,12 +12,14 @@ import TouristSpotDetails from "../pages/TouristSpot/TouristSpotDetails";
 import MyLists from "../pages/MyList/MyLists";
 import UpdateTouristSpot from "../pages/UpdateTouristSpot";
 import NotFoundPage from "../pages/NotFoundPage";
+import CountryAll from "../pages/CountryAll";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Root></Root>, 
+        errorElement: <NotFoundPage />,
         children: [
             {
                 path: '/',
@@ -25,8 +27,8 @@ const router = createBrowserRouter([
               //  loader:()=>fetch('http://localhost:5000/location'),
               loader: async () => {
                 const [locationData, otherData] = await Promise.all([
-                    fetch('http://localhost:5000/location').then(res => res.json()),
-                    fetch('http://localhost:5000/country').then(res => res.json())
+                    fetch('https://b9a10-tour-server.vercel.app/location').then(res => res.json()),
+                    fetch('https://b9a10-tour-server.vercel.app/country').then(res => res.json())
                 ]);
                 return { locationData, otherData };
             }
@@ -40,25 +42,25 @@ const router = createBrowserRouter([
             {
                 path: '/tourist-spot-details/:id',
                 element:<PrivateRoute> <TouristSpotDetails></TouristSpotDetails></PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:5000/location/${params.id}`)
+                loader:({params})=>fetch(`https://b9a10-tour-server.vercel.app/location/${params.id}`)
             },
             
             {
                 path: '/my-list/',
                 element:<PrivateRoute> <MyLists></MyLists></PrivateRoute>,
-                loader:()=>fetch('http://localhost:5000/location')
+                loader:()=>fetch('https://b9a10-tour-server.vercel.app/location')
 
             },
             {
                 path: 'update-my-list/:id', 
                 element:<PrivateRoute><UpdateTouristSpot></UpdateTouristSpot></PrivateRoute>, 
-                loader: ({params}) => fetch(`http://localhost:5000/location/${params.id}`)
+                loader: ({params}) => fetch(`https://b9a10-tour-server.vercel.app/location/${params.id}`)
               },
             
             {
                 path: '/all-tourist-spot',
                 element: <AllTouristSpots></AllTouristSpots>,
-                loader:()=>fetch('http://localhost:5000/location')
+                loader:()=>fetch('https://b9a10-tour-server.vercel.app/location')
             },
             {
                 path: '/contact',
@@ -74,8 +76,10 @@ const router = createBrowserRouter([
             },
            
             {
-              path: '*',
-              element: <NotFoundPage/>
+             path: '/country-name/:id',
+              element: <CountryAll></CountryAll>,
+              loader:({params}) => 
+              fetch(`https://b9a10-tour-server.vercel.app/location-by-country?country=${encodeURIComponent(params.id)}`)
             }
         ]
     }   

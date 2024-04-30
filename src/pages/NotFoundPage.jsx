@@ -1,4 +1,4 @@
-import { useRouteError } from "react-router-dom";
+import { Link, useRouteError } from "react-router-dom";
 import notFound  from "../assets/images/404.gif";
 
 const NotFoundPage = () => {
@@ -21,6 +21,8 @@ const NotFoundPage = () => {
           <p className="my-4 text-gray-500 dark:text-gray-400">
             We cant find that page.
           </p>
+          <Link to="/"><button className="btn btn-success mb-7 text-white">Back Home</button></Link>
+          
         </div>
       </div>
         </div>

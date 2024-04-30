@@ -29,7 +29,7 @@ const AddTouristSpot = () => {
         console.log(newLocation);
 
         //send data to the server
-        fetch('https://b9a10-tour-server-lcstdoy8j-fatemas-projects-345c572b.vercel.app/location', {
+        fetch('https://b9a10-tour-server.vercel.app/location', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

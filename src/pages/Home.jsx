@@ -48,10 +48,6 @@ const Home = () => {
         </section>
         </Fade>
       </div>
-
-   
-
-
       <div className=" max-w-7xl mx-auto">
         <section className="py-6 sm:py-12 ">
           <div className=" p-6 mx-auto space-y-4">
@@ -65,6 +61,7 @@ const Home = () => {
                 <Countries
                   key={country.id}
                   country={country}
+                  
                 ></Countries>
               ))}
             </div>
