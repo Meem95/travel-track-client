@@ -22,7 +22,7 @@ const TouristSpot = ({ cards }) => {
         <div>
               <div className="   p-4" data-aos="zoom-in" data-aos-duration="1500">
                 <div className="card bg-base-100 shadow-2xl relative p-4">
-                <div className="flex  space-x-3 my-2"> <div className="p-2 bg-[#FF8900] rounded-full text-white font-extrabold text-lg"><CiLocationOn /> </div><span className="text-lg font-medium"> {location}</span></div>
+                <div className="flex  space-x-3 my-2"> <div className="p-2 bg-[#FF8900] rounded-full text-white font-extrabold text-lg"><CiLocationOn /> </div><span className="text-lg font-medium"> {truncateString(location,3)} </span></div>
                     <div className="relative">
                         <figure className="">
                             <img className="rounded-md lg:h-60  md:h-56" src={image} alt={country_Name} />
@@ -36,9 +36,9 @@ const TouristSpot = ({ cards }) => {
                         </h2>
                     
                         <div className="card-actions justify-evenly bg-[#dfe0e6] p-1 rounded-xl">
-                            <div className="text-black flex p-1 font-medium"><MdSupervisedUserCircle />{totalVisitorsPerYear} </div>
-                            <div className="text-black flex p-1 font-medium">{travel_time} </div>
-                            <div className="text-black flex p-1 font-medium"> <TiWeatherPartlySunny /> {seasonality} </div>
+                            <div className="text-black flex p-1 font-medium"><MdSupervisedUserCircle />{truncateString(totalVisitorsPerYear,3)}  </div>
+                            <div className="text-black flex p-1 font-medium">{truncateString(travel_time,2)}  </div>
+                            <div className="text-black flex p-1 font-medium"> <TiWeatherPartlySunny />{truncateString(seasonality,2)}  </div>
                         </div>
                         <div className='my-4'>
                             <p>
