@@ -31,7 +31,8 @@ const TouristSpot = ({ cards }) => {
                    
                     <div className="">
                         <h2 className="card-title text-black my-4">
-                            {tourists_spot_name}
+                        {truncateString(tourists_spot_name,4)}
+                            
                             <div className="badge text-white p-3 bg-[#FF8900]">{country_Name}</div>
                         </h2>
                     
