@@ -100,7 +100,7 @@ const Navbar = () => {
                 All Tourists Spot
               </NavLink>
               
-                <NavLink to="/login" 
+                <NavLink to={'/add-tourist-spot'} 
                 className={({ isActive }) =>
                   isActive
                   ? ' font-bold mt-4 '
