@@ -56,8 +56,8 @@ const Mylist = ({listData, item, list, index }) => {
             <td>$ {list.average_cost}</td>
             <td>{list.seasonality}</td>
             <td className="text-xl">
-            <Link to={`/update-my-list/${list._id}`}><TbEdit /></Link>
-                <Link><MdDeleteSweep onClick={() => handleDelete(list._id)} /></Link>
+            <Link to={`/update-my-list/${list._id}`} className="text-2xl text-[#ff8900]"><TbEdit /></Link>
+                <Link className="text-2xl text-[#ff8900]"><MdDeleteSweep onClick={() => handleDelete(list._id)} /></Link>
             </td>
         </tr>
     );

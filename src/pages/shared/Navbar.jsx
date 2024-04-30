@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Tooltip } from 'react-tooltip'
 import userProfile from "../../assets/images/profile.png";
+import Swal from "sweetalert2";
 const Navbar = () => {
 
   const [theme, setTheme] = useState('light')
@@ -37,6 +38,12 @@ const Navbar = () => {
   const handleSignOut = () => {
     logOut()
       .then()
+      Swal.fire({
+        title: 'Success!',
+        text: ' Successfully Logout',
+        icon: 'success',
+        confirmButtonText: 'Cool'
+      })
       .catch();
   };
 
@@ -283,7 +290,7 @@ const Navbar = () => {
         )}
         {!user ?  (
           <Link to="/register">
-          <button onClick={handleSignOut} className="btn btn-sm lg:btn btn-warning bg-[#ff8900] lg:bg-[#ff8900] lg:rounded-3xl rounded-3xl text-white lg:text-white">
+          <button  className="btn btn-sm lg:btn btn-warning bg-[#ff8900] lg:bg-[#ff8900] lg:rounded-3xl rounded-3xl text-white lg:text-white">
             Register
           </button>
           </Link>

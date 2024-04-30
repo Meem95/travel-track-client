@@ -60,7 +60,7 @@ const Register = () => {
               ).then(() => {
                 Swal.fire({
                   title: 'Success!',
-                  text: 'Login Successfully',
+                  text: 'Registrations Successfully',
                   icon: 'success',
                   confirmButtonText: 'Cool'
                 })
@@ -77,6 +77,14 @@ const Register = () => {
             })
             .catch(error => {
                 console.log(error)
+                if (/email-already-in-use/g.test(error)) {
+                  Swal.fire({
+                    title: 'error!',
+                    text: 'Already Have An Account Try To Login With Google!',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                  })
+                }
             })
   };
 
@@ -157,7 +165,7 @@ const Register = () => {
             className="underline text-black"
           >
             {" "}
-           Login
+           Registrations
           </a></Link>
          
         </p>
