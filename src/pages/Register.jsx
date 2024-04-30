@@ -147,15 +147,11 @@ const Register = () => {
               className="w-full px-4 py-3 rounded-md border-gray-700 bg-white text-black focus:border-violet-400"
             />
           </div>
-          <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-violet-400">
-            Sign in
+          <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-violet-400 font-semibold">
+            Registrations
           </button>
         </form>
-        <div className="flex items-center pt-4 space-x-1">
-          <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
-          <p className="px-3 text-sm text-black">Login with social accounts</p>
-          <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
-        </div>
+       
         
         <p className="text-xs text-center sm:px-6 text-black">
           Already have an account?
@@ -164,8 +160,8 @@ const Register = () => {
             href="#"
             className="underline text-black"
           >
-            {" "}
-           Registrations
+           
+           Login
           </a></Link>
          
         </p>
