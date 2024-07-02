@@ -1,7 +1,7 @@
-Website Name: Travel Trek  \
+Website Name: Travel Trek  
 Website URL: https://tour-partner-516bc.web.app/
 
-Features:
+## Features:
 - Easily add, update, and create new travel destinations, giving users access to a diverse range of places to explore.
 - Tailored to each user, the "My List" feature allows travelers to curate their own collection of favorite destinations for future reference and planning.
 - Our footer banner offers valuable information, tips, and insights to enhance your travel experience, ensuring you're well-prepared for your next adventure.
